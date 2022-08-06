@@ -1,4 +1,4 @@
-const { shield, rule, and } = require("graphql-shield");
+const { shield, rule, and, allow } = require("graphql-shield");
 const { errorName } = require("../constants");
 
 /**
@@ -38,7 +38,7 @@ const permissions = shield(
       users: and(isAuthenticated),
     },
     MutationRoot: {
-      login: isContainEllegibleCSRFToken,
+      login: allow,
       changeUserPassword: and(isAuthenticated, isContainEllegibleCSRFToken),
     },
   },

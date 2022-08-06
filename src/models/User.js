@@ -9,11 +9,9 @@
 const graphql = require("graphql");
 const gScalarType = require("graphql-scalars");
 const joinMonster = require("join-monster");
-const { Node } = require("./Node");
 
 const User = new graphql.GraphQLObjectType({
   name: "User",
-  interfaces: [Node],
   extensions: {
     joinMonster: {
       sqlTable: "users",
